@@ -3,7 +3,7 @@ import SearchOrder from '../features/order/SearchOrder'
 
 function Header() {
   return (
-    <header>
+    <header className="bg-primary-500">
       <Link to="/">PizzaPort Co.</Link>
       <SearchOrder />
       <p>PizzaPort</p>
