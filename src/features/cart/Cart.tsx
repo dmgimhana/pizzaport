@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const fakeCart = [
   {
@@ -22,14 +22,19 @@ const fakeCart = [
     unitPrice: 15,
     totalPrice: 15,
   },
-];
+]
 
 function Cart() {
-  const cart = fakeCart;
+  const cart = fakeCart
 
   return (
     <div>
-      <Link to="/menu">&larr; Back to menu</Link>
+      <Link
+        to="/menu"
+        className="text-sm text-secondary-400 hover:text-secondary-500 hover:underline"
+      >
+        &larr; Back to menu
+      </Link>
 
       <h2>Your cart, %NAME%</h2>
 
@@ -38,7 +43,7 @@ function Cart() {
         <button>Clear cart</button>
       </div>
     </div>
-  );
+  )
 }
 
-export default Cart;
+export default Cart
