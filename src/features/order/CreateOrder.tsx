@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom'
 import { Cart, Order } from '../../models'
 import { createOrder } from '../../services/apiRestaurant'
+import Button from '../../ui/Button'
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const isValidPhone = (str: string) =>
@@ -89,12 +90,9 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button
-            disabled={isSubmitting}
-            className="disabled: inline-block cursor-not-allowed rounded-full bg-primary-500 px-4 py-3 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-primary-300 focus:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-300 focus:ring-offset-2"
-          >
+          <Button disabled={isSubmitting}>
             {isSubmitting ? 'Placing order' : 'Order now'}
-          </button>
+          </Button>
         </div>
       </Form>
     </div>
