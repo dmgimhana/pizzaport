@@ -5,22 +5,30 @@ type ButtonProps = {
   children: ReactNode
   to?: string
   disabled?: boolean
+  type?: ButtonType
 }
 
-function Button({ children, disabled, to }: ButtonProps) {
-  const className =
-    'disabled: inline-block cursor-not-allowed rounded-full bg-primary-500 px-4 py-3 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-primary-300 focus:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-300 focus:ring-offset-2 disabled:cursor-not-allowed sm:px-6 sm:py-4'
+const base =
+  'disabled: inline-block cursor-not-allowed rounded-full bg-primary-500 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-primary-300 focus:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-300 focus:ring-offset-2 disabled:cursor-not-allowed '
 
+const styles = {
+  primary: base + ' px-4 py-3 md:px-6 md:py-4',
+  small: base + 'px-4 py-2 md:px-5 md:py-2.5 text-sm',
+}
+
+type ButtonType = keyof typeof styles
+
+function Button({ children, disabled, to, type }: ButtonProps) {
   if (to) {
     return (
-      <Link to={to} className={className}>
+      <Link to={to} className={styles[type || 'primary']}>
         {children}
       </Link>
     )
   }
 
   return (
-    <button disabled={disabled} className={className}>
+    <button disabled={disabled} className={styles[type || 'primary']}>
       {children}
     </button>
   )
