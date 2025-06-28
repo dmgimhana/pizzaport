@@ -3,6 +3,10 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   // content: ['./src/**/*.{html,tsx}'],
   theme: {
+    fontFamily: {
+      heading: ['"Pacifico"', 'cursive'],
+      sans: ['"Nunito"', 'sans-serif'],
+    },
     extend: {
       colors: {
         primary: {
@@ -41,6 +45,9 @@ export default {
           800: '#625508',
           900: '#312c04',
         },
+      },
+      height: {
+        screen: '100dvh', // 100% of the viewport height
       },
     },
   },
