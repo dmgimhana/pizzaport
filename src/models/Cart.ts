@@ -1,5 +1,5 @@
 export interface Cart {
-  pizzaId: string
+  pizzaId: number
   name: string
   quantity: number
   unitPrice: number

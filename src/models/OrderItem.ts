@@ -1,7 +1,8 @@
-import { Item } from './Item'
+import { Cart } from './Cart'
 
 export interface OrderItem {
-  item: Item
-  isLoadingIngredients: boolean
-  ingredients: string[]
+  item: Cart
+  isLoadingIngredients?: boolean
+  ingredients?: string[]
+  key?: number | string
 }
