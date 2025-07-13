@@ -1,37 +1,42 @@
-import { useSelector } from 'react-redux'
-import { Item, RootState } from '../../models'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../models'
 import Button from '../../ui/Button'
 import LinkButton from '../../ui/LinkButton'
 import CartItem from './CartItem'
+import { clearCart, getCart } from './cartSlice'
+import EmptyCart from './EmptyCart'
 
-const fakeCart: Item[] = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-]
+// const fakeCart: Item[] = [
+//   {
+//     pizzaId: 12,
+//     name: 'Mediterranean',
+//     quantity: 2,
+//     unitPrice: 16,
+//     totalPrice: 32,
+//   },
+//   {
+//     pizzaId: 6,
+//     name: 'Vegetale',
+//     quantity: 1,
+//     unitPrice: 13,
+//     totalPrice: 13,
+//   },
+//   {
+//     pizzaId: 11,
+//     name: 'Spinach and Mushroom',
+//     quantity: 1,
+//     unitPrice: 15,
+//     totalPrice: 15,
+//   },
+// ]
 
 function Cart() {
   const username = useSelector((state: RootState) => state.user.username)
 
-  const cart = fakeCart
+  const cart = useSelector(getCart)
+  const dispatch = useDispatch()
+
+  if (!cart.length) return <EmptyCart />
 
   return (
     <div className="px-4 py-3">
@@ -49,7 +54,9 @@ function Cart() {
         <Button to="/order/new" type="primary">
           Order pizza
         </Button>
-        <Button type="secondary">Clear cart</Button>
+        <Button type="secondary" onClick={() => dispatch(clearCart())}>
+          Clear cart
+        </Button>
       </div>
     </div>
   )
