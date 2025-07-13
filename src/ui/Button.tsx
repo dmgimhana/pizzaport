@@ -6,6 +6,7 @@ type ButtonProps = {
   to?: string
   disabled?: boolean
   type?: ButtonType
+  onClick?: () => void
 }
 
 const base =
@@ -20,12 +21,24 @@ const styles = {
 
 type ButtonType = keyof typeof styles
 
-function Button({ children, disabled, to, type }: ButtonProps) {
+function Button({ children, disabled, to, type, onClick }: ButtonProps) {
   if (to) {
     return (
       <Link to={to} className={styles[type || 'primary']}>
         {children}
       </Link>
+    )
+  }
+
+  if (onClick) {
+    return (
+      <button
+        onClick={onClick}
+        disabled={disabled}
+        className={styles[type || 'primary']}
+      >
+        {children}
+      </button>
     )
   }
 
