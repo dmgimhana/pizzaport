@@ -44,7 +44,7 @@ const fakeCart = [
 
 function CreateOrder() {
   const username = useSelector((state: RootState) => state.user.username)
-  console.log('username', username)
+ 
 
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
