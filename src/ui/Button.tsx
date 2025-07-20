@@ -6,7 +6,9 @@ type ButtonProps = {
   to?: string
   disabled?: boolean
   type?: ButtonType
-  onClick?: () => void
+  onClick?:
+    | (() => void)
+    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
 }
 
 const base =
